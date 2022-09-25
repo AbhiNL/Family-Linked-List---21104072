@@ -1,0 +1,56 @@
+# include<bits/stdc++.h>
+using namespace std;
+
+class Data{
+    public:
+    string name;
+    int age;
+
+    Data* prev;
+    Data* next;
+
+    // creating a constructor
+    Data(string s, int a){
+        this-> name = s;
+        this-> age = a;
+        this->prev = NULL;
+        this-> next = NULL;
+
+    }
+    };
+// Connecting Nodes In Linked List
+void connectNode(Data* &node1, Data* &node2, Data* &node3){
+
+    node1->prev = NULL;
+    node1->next = node2;
+    node2->next = node3;
+    node2->prev = node1;
+    node3->next = NULL;
+    node3->prev = node2;
+};
+
+// function to print the node.
+
+void print(Data* node1){
+    Data* temp = node1;
+
+    while(temp!= NULL){
+        cout << temp->name << " ";
+        cout  << temp->age << endl;
+        temp = temp->next;
+        }
+};
+
+int main(){
+    Data* node1 = new Data("DN NAUTIYAL",50);
+    Data* node2 = new Data("SARVESHWARI",46);
+    Data* node3 = new Data("Abhishek Nautiyal",20);
+
+    connectNode(node1,node2,node3);
+
+
+   print(node1);
+
+   return 0;
+
+}
